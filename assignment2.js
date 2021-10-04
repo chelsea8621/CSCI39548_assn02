@@ -8,12 +8,12 @@ Array.prototype.myEach = function(callbackFn) {
 
 // MAP //
 Array.prototype.myMap = function(callbackFn) {
-    const ArrMap = [];
+    const arrMap = [];
     for (let i = 0; i < this.length; i++) {
         if (this[i] === undefined) continue;
-        ArrMap.push(callbackFn(this[i], i, this));
+        arrMap.push(callbackFn(this[i], i, this));
     }
-    return ArrMap;
+    return arrMap;
 };
 
 // Test
