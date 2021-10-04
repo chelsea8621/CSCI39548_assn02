@@ -7,9 +7,19 @@ Array.prototype.myEach = function(callbackFn) {
 };
 
 // MAP //
-Array.prototype.myMap = function() {
-
+Array.prototype.myMap = function(callbackFn) {
+    const ArrMap = [];
+    for (let i = 0; i < this.length; i++) {
+        if (this[i] === undefined) continue;
+        ArrMap.push(callbackFn(this[i], i, this));
+    }
+    return ArrMap;
 };
+
+// Test
+// const array1 = [1,2,3];
+// console.log("Expected:", array1.map(x => x * 2));
+// console.log("My Map:", array1.myMap(x => x * 2));
 
 // FILTER //
 Array.prototype.myFilter = function() {
@@ -51,6 +61,7 @@ Array.prototype.myPush = function(...args) {
     }
     return this.length;
 };
+
 
 // LASTINDEXOF //
 Array.prototype.myLastIndexOf = function() {
