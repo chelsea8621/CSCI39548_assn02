@@ -22,9 +22,22 @@ Array.prototype.myMap = function(callbackFn) {
 // console.log("My Map:", array1.myMap(x => x * 2));
 
 // FILTER //
-Array.prototype.myFilter = function() {
-
+Array.prototype.myFilter = function(callbackFn) {
+    const passed = [];
+    for (let i = 0; i < this.length; i++) {
+        if (this[i] === undefined) continue;
+        if (callbackFn(this[i], i, this) === true) {
+            passed.push(this[i]);
+        }
+    }
+    return passed;
 };
+
+// Test
+// const words = ['spray', 'limit', 'elite', 'destruction', 'present'];
+// console.log("Expected: ", words.filter(word => word.length > 6));
+// console.log("My Filter: ", words.myFilter(word => word.length > 6));
+
 
 // SOME //
 Array.prototype.mySome = function() {
