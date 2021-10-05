@@ -42,6 +42,7 @@ Array.prototype.myFilter = function(callbackFn) {
 // SOME //
 Array.prototype.mySome = function(callbackFn) {
     for (let i = 0; i < this.length; i++) {
+        if (this[i] === undefined) continue;
         if (callbackFn(this[i], i, this)) {
             return true;
         }
@@ -57,9 +58,21 @@ Array.prototype.mySome = function(callbackFn) {
 
 
 // EVERY //
-Array.prototype.myEvery = function() {
-
+Array.prototype.myEvery = function(callbackFn) {
+    for (let i = 0; i < this.length; i++) {
+        if (this[i] === undefined) continue;
+        if (!callbackFn(this[i], i, this)) {
+            return false;
+        }
+    }
+    return true;
 };
+
+// TEST
+// const array1 = [1,,39, 29, 10, 13];
+// console.log("Expected: ", array1.every(currentValue => (currentValue < 40)));
+// console.log("My Every: ", array1.myEvery(currentValue => (currentValue < 40)));
+
 
 // REDUCE //
 Array.prototype.myReduce = function() {
