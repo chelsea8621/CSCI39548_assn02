@@ -40,9 +40,21 @@ Array.prototype.myFilter = function(callbackFn) {
 
 
 // SOME //
-Array.prototype.mySome = function() {
-
+Array.prototype.mySome = function(callbackFn) {
+    for (let i = 0; i < this.length; i++) {
+        if (callbackFn(this[i], i, this)) {
+            return true;
+        }
+    }
+    return false;
 };
+
+// Test
+// const array = [1, 2, 3, 4, 5];
+// const even = (element) => element % 2 === 0;
+// console.log("Expected: ", array.some(even));
+// console.log("My Some: ", array.mySome(even));
+
 
 // EVERY //
 Array.prototype.myEvery = function() {
