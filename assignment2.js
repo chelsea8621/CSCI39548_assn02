@@ -9,12 +9,9 @@ Array.prototype.myEach = function(callbackFn) {
 // MAP //
 Array.prototype.myMap = function(callbackFn) {
     const arrMap = [];
-    for (let i = 0; i < this.length; i++) {
-        if (this[i] === undefined) continue;
-        arrMap.push(callbackFn(this[i], i, this));
-    }
+    this.forEach((e, i, arr) => arrMap.push(callbackFn(e, i, arr)));
     return arrMap;
-};
+}
 
 // Test
 // const array1 = [1,2,3];
