@@ -169,6 +169,32 @@ Object.grabKeys = function(objs) {
 // console.log(Object.grabKeys(myObj));
 
 // VALUES //
-Object.grabValues = function() {
+Object.grabValues = function(obj) {
+    let values = [];
+    for (const property in obj) {
+        values.push(obj[property]);
+    }
+    return values;
+}
 
-};
+// Test
+// const object1 = {
+//     a: 'somestring',
+//     b: 42,
+//     c: false
+// };
+//
+// console.log(Object.values(object1));
+// console.log(Object.grabValues(object1));
+//
+// const obj = { foo: 'bar', baz: 42 };
+// console.log(Object.values(obj));
+// console.log(Object.grabValues(obj));
+//
+// const my_obj = Object.create({}, { getFoo: { value: function() { return this.foo; } } });
+// my_obj.foo = 'bar';
+// console.log(Object.values(my_obj));
+// console.log(Object.grabValues(my_obj));
+//
+// console.log(Object.values('foo'));
+// console.log(Object.grabValues('foo'));
