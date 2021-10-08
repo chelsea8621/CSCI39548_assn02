@@ -4,7 +4,7 @@ Array.prototype.myEach = function(callbackFn) {
         if (this[i] === undefined) continue;
         callbackFn(this[i], i, this);
     }
-};
+}
 
 // MAP //
 Array.prototype.myMap = function(callbackFn) {
@@ -36,7 +36,7 @@ Array.prototype.myFilter = function(callbackFn) {
 
 // SOME //
 Array.prototype.mySome = function(callbackFn) {
-    return !this.every((e, i, arr) => !callbackFn(e, i, arr))
+    return !this.every((e, i, arr) => !callbackFn(e, i, arr));
 }
 
 // Test
@@ -48,7 +48,7 @@ Array.prototype.mySome = function(callbackFn) {
 
 // EVERY //
 Array.prototype.myEvery = function(callbackFn) {
-    return !this.some((e, i, arr) => !callbackFn(e, i, arr))
+    return !this.some((e, i, arr) => !callbackFn(e, i, arr));
 }
 
 // TEST
@@ -62,7 +62,8 @@ Array.prototype.myReduce = function(callbackFn, initialValue) {
     let ivundef = initialValue === undefined;
     let accumulator = ivundef ? this[0] : initialValue;
     let to_reduce = this.slice(+ivundef);
-    to_reduce.forEach((e, i, arr) => accumulator = callbackFn(accumulator, e, i + ivundef, arr));
+    to_reduce.forEach((e, i, arr) =>
+        accumulator = callbackFn(accumulator, e, i + ivundef, arr));
     return accumulator;
 }
 
@@ -104,9 +105,9 @@ Array.prototype.myIndexOf = function(searchElement, fromIndex = 0) {
 // console.log(beasts.myIndexOf('bison', 2));
 
 // Test
-const arr = [1,2,3,4,5];
-console.log(arr.map(e=> [-2,-1,0,1,2,3,4,5,6,7].map(i => arr.indexOf(e, i))));
-console.log(arr.map(e=> [-2,-1,0,1,2,3,4,5,6,7].map(i => arr.myIndexOf(e, i))));
+// const arr = [1,2,3,4,5];
+// console.log(arr.map(e=> [-2,-1,0,1,2,3,4,5,6,7].map(i => arr.indexOf(e, i))));
+// console.log(arr.map(e=> [-2,-1,0,1,2,3,4,5,6,7].map(i => arr.myIndexOf(e, i))));
 
 // PUSH //
 Array.prototype.myPush = function(...args) {
@@ -117,7 +118,7 @@ Array.prototype.myPush = function(...args) {
         arg_i++;
     }
     return this.length;
-};
+}
 
 
 // LASTINDEXOF //
