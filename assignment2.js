@@ -87,9 +87,26 @@ Array.prototype.myIncludes = function(searchElement, fromIndex = 0) {
 // console.log(pets.myIncludes('cat', -2));
 
 // INDEXOF //
-Array.prototype.myIndexOf = function() {
+Array.prototype.myIndexOf = function(searchElement, fromIndex = 0) {
+    if (fromIndex < 0) {
+        fromIndex += this.length;
+    }
+    fromIndex = Math.min(Math.max(fromIndex, 0), this.length);
+    for (let i = fromIndex; i < this.length; i++) {
+        if (this[i] === searchElement) return i;
+    }
+    return -1;
+}
 
-};
+// TEST
+// const beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
+// console.log(beasts.indexOf('bison', 2));
+// console.log(beasts.myIndexOf('bison', 2));
+
+// Test
+const arr = [1,2,3,4,5];
+console.log(arr.map(e=> [-2,-1,0,1,2,3,4,5,6,7].map(i => arr.indexOf(e, i))));
+console.log(arr.map(e=> [-2,-1,0,1,2,3,4,5,6,7].map(i => arr.myIndexOf(e, i))));
 
 // PUSH //
 Array.prototype.myPush = function(...args) {
@@ -104,9 +121,21 @@ Array.prototype.myPush = function(...args) {
 
 
 // LASTINDEXOF //
-Array.prototype.myLastIndexOf = function() {
+Array.prototype.myLastIndexOf = function(searchElement, fromIndex = -1) {
+    if (fromIndex < 0) {
+        fromIndex += this.length;
+    }
+    fromIndex = Math.min(Math.max(fromIndex, 0), this.length - 1);
+    for (let i = fromIndex; i >= 0; i--) {
+        if (this[i] === searchElement) return i;
+    }
+    return -1;
+}
 
-};
+// Test
+// const arr = [1,2,3,4,5];
+// console.log(arr.map(e=> [-2,-1,0,1,2,3,4,5,6,7].map(i => arr.lastIndexOf(e, i))));
+// console.log(arr.map(e=> [-2,-1,0,1,2,3,4,5,6,7].map(i => arr.myLastIndexOf(e, i))));
 
 // KEYS //
 Object.grabKeys = function() {
