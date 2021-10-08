@@ -138,9 +138,35 @@ Array.prototype.myLastIndexOf = function(searchElement, fromIndex = -1) {
 // console.log(arr.map(e=> [-2,-1,0,1,2,3,4,5,6,7].map(i => arr.myLastIndexOf(e, i))));
 
 // KEYS //
-Object.grabKeys = function() {
+Object.grabKeys = function(objs) {
+    let keys = [];
+    for (const property in objs) {
+        keys.push(property);
+    }
+    return keys;
+}
 
-};
+// Test
+// const object1 = {
+//     a: 'somestring',
+//     b: 42,
+//     c: false
+// };
+// console.log(Object.keys(object1));
+// console.log(Object.grabKeys(object1));
+//
+// const anObj = { 100: 'a', 2: 'b', 7: 'c' };
+// console.log(Object.keys(anObj));
+// console.log(Object.grabKeys(anObj));
+//
+// const myObj = Object.create({}, {
+//     getFoo: {
+//         value: function () { return this.foo; }
+//     }
+// });
+// myObj.foo = 1;
+// console.log(Object.keys(myObj));
+// console.log(Object.grabKeys(myObj));
 
 // VALUES //
 Object.grabValues = function() {
