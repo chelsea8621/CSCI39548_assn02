@@ -36,14 +36,8 @@ Array.prototype.myFilter = function(callbackFn) {
 
 // SOME //
 Array.prototype.mySome = function(callbackFn) {
-    for (let i = 0; i < this.length; i++) {
-        if (this[i] === undefined) continue;
-        if (callbackFn(this[i], i, this)) {
-            return true;
-        }
-    }
-    return false;
-};
+    return !this.every((e, i, arr) => !callbackFn(e, i, arr))
+}
 
 // Test
 // const array = [1, 2, 3, 4, 5];
@@ -54,14 +48,8 @@ Array.prototype.mySome = function(callbackFn) {
 
 // EVERY //
 Array.prototype.myEvery = function(callbackFn) {
-    for (let i = 0; i < this.length; i++) {
-        if (this[i] === undefined) continue;
-        if (!callbackFn(this[i], i, this)) {
-            return false;
-        }
-    }
-    return true;
-};
+    return !this.some((e, i, arr) => !callbackFn(e, i, arr))
+}
 
 // TEST
 // const array1 = [1,,39, 29, 10, 13];
