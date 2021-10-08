@@ -73,9 +73,18 @@ Array.prototype.myReduce = function(callbackFn, initialValue) {
 // console.log("my reduce: ", array1.myReduce(reducer));
 
 // INCLUDES //
-Array.prototype.myIncludes = function() {
-
-};
+Array.prototype.myIncludes = function(searchElement, fromIndex = 0) {
+    return this.some((e, i, arr) =>
+        searchElement === e && i >= (fromIndex < 0 ? arr.length + fromIndex : fromIndex));
+}
+// Test
+// const array1 = [1, 2, 3];
+// console.log(array1.includes(2, -100));
+// console.log("my includes:", array1.myIncludes(2, -100));
+//
+// const pets = ['cat', 'dog', 'bat'];
+// console.log(pets.includes('cat', -2));
+// console.log(pets.myIncludes('cat', -2));
 
 // INDEXOF //
 Array.prototype.myIndexOf = function() {
