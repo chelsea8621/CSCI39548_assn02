@@ -57,10 +57,20 @@ Array.prototype.myEvery = function(callbackFn) {
 // console.log("My Every: ", array1.myEvery(currentValue => (currentValue < 40)));
 
 
-// REDUCE //
-Array.prototype.myReduce = function() {
+// REDUCE
+Array.prototype.myReduce = function(callbackFn, initialValue) {
+    let ivundef = initialValue === undefined;
+    let accumulator = ivundef ? this[0] : initialValue;
+    let to_reduce = this.slice(+ivundef);
+    to_reduce.forEach((e, i, arr) => accumulator = callbackFn(accumulator, e, i + ivundef, arr));
+    return accumulator;
+}
 
-};
+// TEST
+// const array1 = [1,, 3, 4];
+// const reducer = (previousValue, currentValue) => previousValue + currentValue;
+// console.log("expected: ", array1.reduce(reducer));
+// console.log("my reduce: ", array1.myReduce(reducer));
 
 // INCLUDES //
 Array.prototype.myIncludes = function() {
