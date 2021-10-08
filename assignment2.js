@@ -21,14 +21,12 @@ Array.prototype.myMap = function(callbackFn) {
 // FILTER //
 Array.prototype.myFilter = function(callbackFn) {
     const passed = [];
-    for (let i = 0; i < this.length; i++) {
-        if (this[i] === undefined) continue;
-        if (callbackFn(this[i], i, this) === true) {
-            passed.push(this[i]);
-        }
-    }
+    this.forEach((e, i, arr) => {
+        if (callbackFn(e, i, arr))
+            passed.push(e);
+    });
     return passed;
-};
+}
 
 // Test
 // const words = ['spray', 'limit', 'elite', 'destruction', 'present'];
